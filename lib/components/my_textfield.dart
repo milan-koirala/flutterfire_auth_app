@@ -9,7 +9,7 @@ class MyTextfield extends StatelessWidget {
     required this.controller,
     required this.hintText,
     required this.obscureText,
-    });
+  });
 
   @override
   Widget build(BuildContext context) {
