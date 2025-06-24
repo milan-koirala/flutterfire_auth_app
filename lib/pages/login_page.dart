@@ -4,6 +4,7 @@ import 'package:flutterfire_auth/components/my_button.dart';
 import 'package:flutterfire_auth/components/my_textfield.dart';
 import 'package:flutterfire_auth/components/square_tile.dart';
 import 'package:flutterfire_auth/services/auth_service.dart';
+import 'package:flutterfire_auth/pages/forgot_pass_page.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -109,9 +110,24 @@ class _LoginPageState extends State<LoginPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[600]),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ForgotPasswordPage();
+                              },
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -161,10 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(width: 25),
 
                     // apple button
-                    SquareTile(
-                      onTap: () {},
-                      imagePath: 'lib/images/apple.png'
-                    ),
+                    SquareTile(onTap: () {}, imagePath: 'lib/images/apple.png'),
                   ],
                 ),
 
