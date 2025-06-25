@@ -1,14 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfire_auth/services/noti_service.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final user = FirebaseAuth.instance.currentUser!;
 
-  // sign user out method
+  // Sign user out method
   void signUserOut() async {
-    FirebaseAuth.instance.signOut();
+    await FirebaseAuth.instance.signOut();
   }
 
   @override
@@ -19,14 +20,34 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: signUserOut,
-            icon: Icon(Icons.logout, color: Colors.white),
+            icon: const Icon(Icons.logout, color: Colors.white),
           ),
         ],
       ),
       body: Center(
-        child: Text(
-          "LOGGED IN AS: " + user.email!,
-          style: TextStyle(fontSize: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "LOGGED IN AS: ${user.email!}",
+              style: const TextStyle(fontSize: 20),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 30),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                onPressed: () async {
+                  await NotiService().showNotification(
+                    title: "Test Notification",
+                    body: "This is a test notification!",
+                  );
+                },
+                child: const Text("Show Notification"),
+              ),
+            ),
+          ],
         ),
       ),
     );
