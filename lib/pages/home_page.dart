@@ -1,28 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_auth/services/noti_service.dart';
+import 'package:flutterfire_auth/components/my_drawer.dart'; // Import your drawer
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final user = FirebaseAuth.instance.currentUser!;
 
-  // Sign user out method
-  void signUserOut() async {
+  void signUserOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
+    // Optional: Navigate to login page
+    // Navigator.pushReplacementNamed(context, '/login');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(onSignOut: () => signUserOut(context)),
       appBar: AppBar(
         backgroundColor: Colors.black,
-        actions: [
-          IconButton(
-            onPressed: signUserOut,
-            icon: const Icon(Icons.logout, color: Colors.white),
-          ),
-        ],
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text("Home", style: TextStyle(color: Colors.white)),
       ),
       body: Center(
         child: Column(
@@ -34,7 +33,6 @@ class HomePage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
