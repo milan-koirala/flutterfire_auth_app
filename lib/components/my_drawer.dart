@@ -11,37 +11,73 @@ class MyDrawer extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
 
     return Drawer(
-      backgroundColor: Colors.grey.shade100,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          DrawerHeader(
+          UserAccountsDrawerHeader(
             decoration: const BoxDecoration(color: Colors.black),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(Icons.person, color: Colors.white, size: 40),
-                const SizedBox(height: 10),
-                Text(
-                  user?.email ?? "User",
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
+            accountName: const Text('Welcome!'),
+            accountEmail: Text(user?.email ?? "No email"),
+            currentAccountPicture: const CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(Icons.person, color: Colors.black, size: 40),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () {
-              Navigator.pop(context); // Close drawer
+              Navigator.pop(context);
+              // Navigator.pushNamed(context, '/home');
             },
           ),
           ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text('Exit'),
+            leading: const Icon(Icons.message),
+            title: const Text('Messages'),
             onTap: () {
               Navigator.pop(context);
-              onSignOut(); // Call the passed callback
+              // Navigator.pushNamed(context, '/messages');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_cart),
+            title: const Text('Cart'),
+            onTap: () {
+              Navigator.pop(context);
+              // Navigator.pushNamed(context, '/cart');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Profile'),
+            onTap: () {
+              Navigator.pop(context);
+              // Navigator.pushNamed(context, '/profile');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Settings'),
+            onTap: () {
+              Navigator.pop(context);
+              // Navigator.pushNamed(context, '/settings');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.help),
+            title: const Text('Help'),
+            onTap: () {
+              Navigator.pop(context);
+              // Navigator.pushNamed(context, '/help');
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.logout, color: Colors.red),
+            title: const Text('Sign Out', style: TextStyle(color: Colors.red)),
+            onTap: () {
+              Navigator.pop(context);
+              onSignOut();
             },
           ),
         ],
