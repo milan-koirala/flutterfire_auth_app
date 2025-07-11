@@ -25,9 +25,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
-            onPressed: () {
-              // Navigator.pushNamed(context, '/cart');
-            },
+            onPressed: () => Navigator.pushNamed(context, "/cart_page"),
           ),
         ],
       ),
@@ -96,13 +94,16 @@ class HomePage extends StatelessWidget {
                 return Card(
                   elevation: 2,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: ClipRRect(
-                          borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(10),
+                          ),
                           child: Image.asset(
                             'assets/product${index + 1}.jpg', // Add images to assets
                             width: double.infinity,
@@ -115,15 +116,21 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
-                            Text('Product Name',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14)),
+                            Text(
+                              'Product Name',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
                             SizedBox(height: 4),
-                            Text('\$99.99',
-                                style: TextStyle(
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.bold)),
+                            Text(
+                              '\$99.99',
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                       ),
