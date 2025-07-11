@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfire_auth/pages/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutterfire_auth/pages/cart_page.dart';
 import 'package:flutterfire_auth/services/noti_service.dart';
 import 'firebase_options.dart';
 
@@ -19,9 +20,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: AuthPage(),
+      routes: {
+        "/cart_page": (context) => const CartPage(),
+      },
     );
   }
 }
