@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutterfire_auth/components/my_bottom_navbar.dart';
 import 'package:flutterfire_auth/pages/home_page.dart';
 import 'package:flutterfire_auth/pages/notification_page.dart';
+import 'package:flutterfire_auth/pages/qr_scanner_page.dart';
 import 'package:flutterfire_auth/pages/user_profile_page.dart';
+import 'package:flutterfire_auth/pages/wishlist_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -17,6 +19,8 @@ class _DashboardPageState extends State<DashboardPage> {
   final List<Widget> _pages =  [
     HomePage(),
     NotificationPage(),
+    QRScannerPage(),
+    WishlistPage(),
     UserProfilePage(),
   ];
 
